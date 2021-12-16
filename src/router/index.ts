@@ -52,7 +52,7 @@ const routes: Array<RouteConfig> = [
       {
         name: 'user',
         path: '/user',
-        component: () => import(/* webpackChunkName:'user' */'@/views/user/index.vue'),
+        component: () => import(/* webpackChunkName:'user' */'@/views/user/components/UserList.vue'),
         meta: { // meta默认是个空对象
           requestAuth: true // 自定义数据
         }

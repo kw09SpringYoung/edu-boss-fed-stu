@@ -34,3 +34,33 @@ export const getUserInfo = (): AxiosPromise => {
     url: '/front/user/getInfo'
   })
 }
+
+// 分页查询用户信息
+export const getUserPages = (data = {}): AxiosPromise => {
+  return request({
+    method: 'POST',
+    url: '/boss//user/getUserPages',
+    data
+  })
+}
+// 启用用户
+export const enableUser = (id:string|number): AxiosPromise => {
+  return request({
+    method: 'GET',
+    url: '/boss/user/enableUser',
+    params: {
+      id
+    }
+  })
+}
+
+// 封禁用户
+export const forbidUser = (id:string|number): AxiosPromise => {
+  return request({
+    method: 'POST',
+    url: '/boss/user/forbidUser',
+    data: {
+      userId: id
+    }
+  })
+}

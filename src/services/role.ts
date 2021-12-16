@@ -23,6 +23,7 @@ export const saveOrUpdate = (data: unknown): AxiosPromise => {
   })
 }
 
+// 获取角色
 export const getRoleById = (id: string | number): AxiosPromise => {
   return request({
     method: 'GET',
@@ -34,5 +35,34 @@ export const deleteRoleById = (id: string | number): AxiosPromise => {
   return request({
     method: 'DELETE',
     url: `/boss/role/${id}`
+  })
+}
+
+// 获取所有角色
+export const getAllRoles = () => {
+  return request({
+    method: 'GET',
+    url: '/boss/role/all'
+  })
+}
+
+// 查询用户角色
+export const getRoleByUserId = (userId: string | number): AxiosPromise => {
+  return request({
+    method: 'GET',
+    url: `/boss/role/user/${userId}`
+  })
+}
+
+//  给用户分配角色
+interface UserRoles {
+  roleIdList: unknown[]
+  userId: string | number
+}
+export const allocateUserRoles = (data: UserRoles) => {
+  return request({
+    method: 'POST',
+    url: '/boss/role/allocateUserRoles',
+    data
   })
 }
