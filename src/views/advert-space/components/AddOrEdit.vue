@@ -26,7 +26,9 @@ export default Vue.extend({
   name: 'addAdvertSpace',
   data () {
     return {
-      ruleForm: name
+      ruleForm: {
+        name: ''
+      }
     }
   }
 })
