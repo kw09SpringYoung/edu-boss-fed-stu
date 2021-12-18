@@ -1,5 +1,5 @@
 {
-    "rewrites": [
+    "redirects": [
       {
         "source": "/boss/(.*)",
         "destination": "/api/proxy"
@@ -9,4 +9,4 @@
         "destination": "/api/proxy"
       }
     ]
-}~
+}
