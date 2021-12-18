@@ -1,2 +1,0 @@
-(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["course"],{bff8:function(e,n,t){"use strict";t.r(n);var s=function(){var e=this,n=e.$createElement,t=e._self._c||n;return t("div",{staticClass:"course"},[e._v("课程管理")])},a=[],c=t("2b0e"),u=c["default"].extend({name:"CourseIndex"}),r=u,o=t("2877"),l=Object(o["a"])(r,s,a,!1,null,"59a01ca4",null);n["default"]=l.exports}}]);
-//# sourceMappingURL=course.269bfe15.js.map

@@ -1,0 +1,12 @@
+{
+    "rewrites": [
+      {
+        "source": "/boss/(.*)",
+        "destination": "/api/proxy"
+      },
+      {
+        "source": "/front/(.*)",
+        "destination": "/api/proxy"
+      }
+    ]
+}~
