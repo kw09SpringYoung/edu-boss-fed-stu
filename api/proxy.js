@@ -6,7 +6,7 @@ module.exports = (req, res) => {
   if (req.url.startsWith('/boss')) {
     target = 'http://eduboss.lagou.com'
   }
-  if (res.url.startsWith('/front')) {
+  if (req.url.startsWith('/front')) {
     target = 'http://edufront.lagou.com'
   }
   createProxyMiddleware({
