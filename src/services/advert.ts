@@ -8,3 +8,10 @@ export const getAdList = (): AxiosPromise => {
     url: '/front/ad/getAdList'
   })
 }
+// 获取所有的广告位
+export const getAllSpaces = (): AxiosPromise => {
+  return request({
+    method: 'GET',
+    url: '/front/ad/space/getAllSpaces'
+  })
+}

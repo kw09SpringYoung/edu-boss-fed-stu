@@ -1,16 +1,16 @@
 <template>
-  <div class="advert-space">
-    <advert-space-list/>
+  <div class="advert-space-add">
+    <add-or-edit/>
   </div>
 </template>
 
 <script>
 import Vue from 'vue'
-import AdvertSpaceList from './components/list.vue'
+import AddOrEdit from './components/AddOrEdit.vue'
 export default Vue.extend({
-  name: 'AdvertSpaceIndex',
+  name: 'AddAdvertSpace',
   components: {
-    AdvertSpaceList
+    AddOrEdit
   }
 })
 </script>

@@ -2,19 +2,17 @@
   <div>
     <el-card class="box-card">
       <div slot="header" class="clearfix">
-        <span>{{isEdit ? '编辑菜单' : '添加菜单'}}</span>
+        <span>{{isEdit ? '编辑广告' : '添加广告'}}</span>
         <span style="float: right; padding: 3px 0" type="text" class="el-icon-close" @click='close'></span>
       </div>
       <el-form ref="resource-create-edit" :model="form" label-width="80px">
-        <el-form-item label="菜单名称" prop="name">
+        <el-form-item label="广告名称" prop="name">
           <el-input v-model="form.name"></el-input>
         </el-form-item>
-        <el-form-item label="菜单路径" prop="href">
-          <el-input v-model="form.href"></el-input>
-        </el-form-item>
-        <el-form-item label="上级菜单" prop="parentId">
+
+        <el-form-item label="广告位置" prop="parentId">
           <el-select v-model="form.parentId" placeholder="请选择活动区域">
-            <el-option label="无上级菜单" :value="-1"></el-option>
+            <el-option label="请选择" :value="-1"></el-option>
             <el-option
             v-for='item in parentMenuList'
             :key = item.id
@@ -23,20 +21,75 @@
             ></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="描述" prop="description">
-          <el-input v-model="form.description"></el-input>
+        <el-form-item label="广告位置" prop="href">
+          <el-input v-model="form.href"></el-input>
         </el-form-item>
-        <el-form-item label="前端图标" prop="icon">
-          <el-input v-model="form.icon"></el-input>
+        <el-form-item label="开始时间" prop="href">
+          <el-date-picker
+            v-model="value1"
+            type="datetime"
+            placeholder="选择日期时间">
+          </el-date-picker>
         </el-form-item>
-        <el-form-item label="是否显示" prop="shown">
+        <el-form-item label="到期时间" prop="href">
+          <el-date-picker
+            v-model="value2"
+            type="datetime"
+            placeholder="选择日期时间">
+          </el-date-picker>
+        </el-form-item>
+        <el-form-item label="上线/下线" prop="shown">
           <el-radio-group v-model="form.shown">
-            <el-radio :label="false">是</el-radio>
-            <el-radio :label="true">否</el-radio>
+            <el-radio :label="false">下线</el-radio>
+            <el-radio :label="true">上线</el-radio>
           </el-radio-group>
         </el-form-item>
-        <el-form-item label="排序" prop="orderNum">
-           <el-input-number v-model="form.orderNum" @change="handleChange" :min="0" :max="10" label="描述文字"></el-input-number>
+        <!-- 广告图片 -->
+        <el-form-item
+        label="广告图片">
+          <el-upload
+              action="http://eduboss.lagou.com/boss//course/upload"
+              list-type="picture-card"
+              :auto-upload="false">
+                <i slot="default" class="el-icon-plus"></i>
+                <div slot="file" slot-scope="{file}">
+                  <img
+                    class="el-upload-list__item-thumbnail"
+                    :src="file.url" alt=""
+                  >
+                  <span class="el-upload-list__item-actions">
+                    <span
+                      class="el-upload-list__item-preview"
+                      @click="handlePictureCardPreview(file)"
+                    >
+                      <i class="el-icon-zoom-in"></i>
+                    </span>
+                    <span
+                      v-if="!disabled"
+                      class="el-upload-list__item-delete"
+                      @click="handleDownload(file)"
+                    >
+                      <i class="el-icon-download"></i>
+                    </span>
+                    <span
+                      v-if="!disabled"
+                      class="el-upload-list__item-delete"
+                      @click="handleRemove(file)"
+                    >
+                      <i class="el-icon-delete"></i>
+                    </span>
+                  </span>
+                </div>
+            </el-upload>
+            <el-dialog :visible.sync="dialogVisible">
+              <img width="100%" :src="dialogImageUrl" alt="">
+            </el-dialog>
+        </el-form-item>
+        <el-form-item label="广告链接" prop="icon">
+          <el-input v-model="form.icon"></el-input>
+        </el-form-item>
+        <el-form-item label="广告备注" prop="href">
+          <el-input v-model="form.href" type="textarea" placeholder="请输入内容" :rows="2"></el-input>
         </el-form-item>
         <el-form-item>
           <el-button type="primary" @click="onSubmit">提交</el-button>
@@ -59,6 +112,11 @@ export default Vue.extend({
   },
   data () {
     return {
+      dialogImageUrl: '',
+      dialogVisible: false,
+      disabled: false,
+      value1: '',
+      value2: '',
       form: {
         description: '',
         href: '',
@@ -100,7 +158,7 @@ export default Vue.extend({
       this.$refs['resource-create-edit'].resetFields()
     },
     close () {
-      this.$confirm('是否关闭添加菜单面板?', '提示', {
+      this.$confirm('是否关闭面板?', '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
         type: 'warning'
@@ -110,6 +168,17 @@ export default Vue.extend({
     },
     handleChange (value) {
       console.log(value)
+    },
+    // 图片上传方法
+    handleRemove (file) {
+      console.log(file)
+    },
+    handlePictureCardPreview (file) {
+      this.dialogImageUrl = file.url
+      this.dialogVisible = true
+    },
+    handleDownload (file) {
+      console.log(file)
     }
   }
 })
