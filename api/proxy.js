@@ -1,13 +1,16 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const { createProxyMiddleware } = require('http-proxy-middleware')
 
-module.exports = () => {
-  createProxyMiddleware('/boss', {
-    target: 'http://eduboss.lagou.com',
+module.exports = (req, res) => {
+  let target = null
+  if (req.url.startsWith('/boss')) {
+    target = 'http://eduboss.lagou.com'
+  }
+  if (res.url.startsWith('/front')) {
+    target = 'http://edufront.lagou.com'
+  }
+  createProxyMiddleware({
+    target,
     changeOrigin: true
-  })
-  createProxyMiddleware('/front', {
-    target: 'http://edufront.lagou.com',
-    changeOrigin: true
-  })
+  })(req, res)
 }
