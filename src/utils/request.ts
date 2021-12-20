@@ -88,9 +88,9 @@ request.interceptors.response.use(response => { // 状态码为2xx都会进入�
       })
     } else if (status === 403) {
       Message.error(`请求失败：${error.message}`)
-      router.push({
-        name: '403'
-      })
+      // router.push({
+      //   name: '403'
+      // })
     } else if (status === 404) {
       Message.error('请求资源不存在')
     } else if (status === 500) {

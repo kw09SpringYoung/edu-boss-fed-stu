@@ -11,7 +11,7 @@
         <el-avatar
         shape="square"
         :size="40"
-        :src="userInfo.portrait || require('@/assets/touxiang.png')"></el-avatar>
+        :src="userInfo.portrait || require('@/assets/imgs/touxiang.png')"></el-avatar>
         <i class="el-icon-arrow-down el-icon--right"></i>
       </span>
       <el-dropdown-menu slot="dropdown">

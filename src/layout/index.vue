@@ -10,7 +10,7 @@
         </el-header>
         <el-main>
           <!-- 子路由出口 -->
-          <router-view></router-view>
+          <router-view class="viewPort"></router-view>
         </el-main>
       </el-container>
     </el-container>
@@ -43,5 +43,9 @@ export default Vue.extend({
 }
 .el-main {
   background:#E9EEF3;
+}
+.el-main  {
+    background: url('../assets/imgs/edubg.jpeg');
+    background-clip: border-box;
 }
 </style>
