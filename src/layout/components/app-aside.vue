@@ -1,6 +1,9 @@
 <template>
   <div class="aside">
+    <el-button class="collapseBtn el-icon-s-operation" round @click="isCollapse = isCollapse ? false: true"></el-button>
     <el-menu
+      class="el-menu-vertical-demo"
+      :collapse = 'isCollapse'
       default-active="4"
       @open="handleOpen"
       @close="handleClose"
@@ -56,6 +59,11 @@
 import Vue from 'vue'
 export default Vue.extend({
   name: 'AppAside',
+  data () {
+    return {
+      isCollapse: false
+    }
+  },
   methods: {
     handleOpen (key: string, keyPath: string): void {
       console.log(key, keyPath)
@@ -75,4 +83,18 @@ $height: 100%;
     height: 100%;
   }
 }
+.aside{
+  position: relative;
+}
+.collapseBtn{
+  position:absolute;
+  top: 200px;
+  top: 315px;
+  z-index: 1;
+  right: -18px;
+}
+ .el-menu-vertical-demo:not(.el-menu--collapse) {
+    width: 200px;
+    min-height: 400px;
+  }
 </style>

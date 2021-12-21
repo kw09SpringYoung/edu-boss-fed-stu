@@ -1,5 +1,6 @@
 <template>
   <div class="home">
+    <h1 style='text-align:center'>Welcome, the project is constantly updated.</h1>
   </div>
 </template>
 

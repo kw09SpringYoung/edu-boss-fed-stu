@@ -10,10 +10,10 @@
   >
   <h2>登录</h2>
       <el-form-item label="手机号" prop="phone">
-        <el-input v-model="form.phone" @keyup.native.enter="onSubmit"></el-input>
+        <el-input v-model="form.phone" @keyup.native.enter="onSubmit" placeholder="请输入手机号"></el-input>
       </el-form-item>
       <el-form-item label="密码" prop="password">
-        <el-input v-model="form.password" @keyup.native.enter="onSubmit"></el-input>
+        <el-input v-model="form.password" @keyup.native.enter="onSubmit" placeholder="请输入密码"></el-input>
       </el-form-item>
       <el-form-item>
         <el-button
@@ -36,8 +36,8 @@ export default Vue.extend({
   data () {
     return {
       form: {
-        phone: '18201288771',
-        password: '111111'
+        phone: '',
+        password: ''
       },
       isLoginLoading: false,
       rules: {
@@ -82,6 +82,9 @@ export default Vue.extend({
 <style lang= 'scss' scoped>
 .login {
   height: 100vh;
+  background: url(../../assets/imgs/loginbg.jpeg);
+  background-repeat: no-repeat;
+  background-size: cover;
   display: flex;
   justify-content: center;
   align-items: center;

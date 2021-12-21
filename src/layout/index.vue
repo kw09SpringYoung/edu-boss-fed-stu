@@ -1,7 +1,7 @@
 <template>
   <div class="layout">
     <el-container>
-      <el-aside width="200px">
+      <el-aside>
         <app-aside></app-aside>
       </el-aside>
       <el-container>
@@ -37,6 +37,7 @@ export default Vue.extend({
 }
 .el-aside {
   background: #D3DCE6;
+  width: auto!important;
 }
 .el-header {
   background: #fff;
